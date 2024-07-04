@@ -1,11 +1,28 @@
 <script setup>
+import { ref, onMounted, onUnmounted } from 'vue'
 import LogoutImage from '/src/components/icons/logout.png'
 import ButtonGeneral from '@/components/atoms/button-general.vue'
 import InputComponent from '@/components/atoms/input-component.vue'
+import NoResponsive from '@/components/molecules/no-responsive.vue'
+
+const isSmallScreen = ref(window.innerWidth < 1024)
+
+function handleResize() {
+  isSmallScreen.value = window.innerWidth < 1024
+}
+
+onMounted(() => {
+  window.addEventListener('resize', handleResize)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', handleResize)
+})
 </script>
 
 <template>
-  <div class="font-pop h-screen w-screen bg-monochrome-main flex">
+  <NoResponsive v-if="isSmallScreen"/>
+  <div v-else class="font-pop h-screen w-screen bg-monochrome-main flex">
     <!--    Child Component-->
     <div class="flex shadow-2xl h-3/4 w-2/3 m-auto rounded-xl">
       <!--      Color Side-->

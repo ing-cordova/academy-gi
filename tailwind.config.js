@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
+    './index.html',
+    './src/**/*.{vue,js,ts,jsx,tsx}'
   ],
   theme: {
     fontFamily: {
@@ -24,11 +24,16 @@ export default {
           'secondary': '#504db1',
           'tertiary': '#a7a6d8',
           'white': '#ffffff',
-          'input' : '#F6F9FD'
+          'input': '#F6F9FD'
         }
       }
     },
+    screens: {
+      'phone': [
+        { 'min': '320px', 'max': '480px' }
+      ]
+    }
   },
-  plugins: [],
+  plugins: []
 }
 
