@@ -37,7 +37,7 @@ onUnmounted(() => {
             left.</h1>
 
 
-          <div class="flex mt-40">
+          <div class="flex mt-20">
             <div class="bg-white w-1/2 rounded-xl mt-4 mb-4 ml-4 p-3 text-right">
               <label class="font-bold text-xl text-monochrome-main select-none">BELS</label>
             </div>
