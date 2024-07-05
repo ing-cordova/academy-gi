@@ -4,8 +4,10 @@ import LogoutImage from '/src/components/icons/logout.png'
 import ButtonGeneral from '@/components/atoms/button-general.vue'
 import InputComponent from '@/components/atoms/input-component.vue'
 import NoResponsive from '@/components/molecules/no-responsive.vue'
+import { useRouter } from 'vue-router'
 
 const isSmallScreen = ref(window.innerWidth < 1024)
+const router = useRouter()
 
 function handleResize() {
   isSmallScreen.value = window.innerWidth < 1024
@@ -18,10 +20,15 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', handleResize)
 })
+
+
+function login() {
+  router.push('/dashboard')
+}
 </script>
 
 <template>
-  <NoResponsive v-if="isSmallScreen"/>
+  <NoResponsive v-if="isSmallScreen" />
   <div v-else class="font-pop h-screen w-screen bg-monochrome-main flex">
     <!--    Child Component-->
     <div class="flex shadow-2xl h-3/4 w-2/3 m-auto rounded-xl">
@@ -78,9 +85,13 @@ onUnmounted(() => {
               Terms of Service and our Privacy Policy</label>
           </div>
 
-          <button class="bg-monochrome-main text-white text-xl shadow-xl w-full mt-4 mb-4 p-2 rounded-xl">Login</button>
+          <button @click="login"
+                  class="bg-monochrome-main text-white text-xl shadow-xl w-full mt-4 mb-4 p-2 rounded-xl">Login
+          </button>
 
-          <p class="text-center text-xs text-monochrome-main select-none mt-6">Don't have an account? <a href="#" class="text-monochrome-main font-bold">Sign up</a></p>
+          <p class="text-center text-xs text-monochrome-main select-none mt-6">Don't have an account? <a href="#"
+                                                                                                         class="text-monochrome-main font-bold">Sign
+            up</a></p>
         </div>
       </div>
     </div>

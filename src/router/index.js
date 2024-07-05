@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomePage from '@/components/pages/home-page.vue'
+import DashboardPage from '@/components/pages/dashboard-page.vue'
 import LoginPage from '@/components/pages/login-page.vue'
 
 const router = createRouter({
@@ -11,9 +11,9 @@ const router = createRouter({
       component: LoginPage
     },
     {
-      path: '/home',
-      name: 'HomePage',
-      component: HomePage
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: DashboardPage
     },
     {
       path: '/:pathMatch(.*)*',
