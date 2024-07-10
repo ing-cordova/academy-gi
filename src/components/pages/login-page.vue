@@ -5,6 +5,7 @@ import ButtonGeneral from '@/components/atoms/button-general.vue'
 // import InputComponent from '@/components/atoms/input-component.vue'
 import NoResponsive from '@/components/molecules/no-responsive.vue'
 import { useRouter } from 'vue-router'
+import privateRoutes from '@/router/routes-private.js'
 
 const isSmallScreen = ref(window.innerWidth < 1024)
 const router = useRouter()
@@ -31,7 +32,7 @@ function login() {
     console.log('Please agree to the terms of service and privacy policy')
   } else {
     console.log(email.value, password.value)
-    router.push('/dashboard')
+    router.push(privateRoutes.DASHBOARD)
   }
 }
 </script>
