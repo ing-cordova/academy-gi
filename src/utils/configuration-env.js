@@ -1,0 +1,3 @@
+const SYSTEM_NAME = 'ADMINISTRATOR-BG'
+
+export default SYSTEM_NAME
