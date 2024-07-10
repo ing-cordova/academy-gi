@@ -2,12 +2,15 @@
 import { ref, onMounted, onUnmounted } from 'vue'
 import LogoutImage from '/src/components/icons/logout.png'
 import ButtonGeneral from '@/components/atoms/button-general.vue'
-import InputComponent from '@/components/atoms/input-component.vue'
+// import InputComponent from '@/components/atoms/input-component.vue'
 import NoResponsive from '@/components/molecules/no-responsive.vue'
 import { useRouter } from 'vue-router'
 
 const isSmallScreen = ref(window.innerWidth < 1024)
 const router = useRouter()
+
+const email = ref('')
+const password = ref('')
 
 function handleResize() {
   isSmallScreen.value = window.innerWidth < 1024
@@ -23,7 +26,13 @@ onUnmounted(() => {
 
 
 function login() {
-  router.push('/dashboard')
+  const inputCheckBox = document.getElementById('check')
+  if (!inputCheckBox.checked) {
+    console.log('Please agree to the terms of service and privacy policy')
+  } else {
+    console.log(email.value, password.value)
+    router.push('/dashboard')
+  }
 }
 </script>
 
@@ -70,28 +79,34 @@ function login() {
             <ButtonGeneral iconSrc="/src/components/icons/facebook.png" text="Facebook" />
           </div>
 
-          <div class="flex flex-col">
-            <label class="select-none text-sm text-black mt-4">Email</label>
-            <InputComponent placeholder="Email" />
-          </div>
-          <div class="flex flex-col ">
-            <label class="select-none text-sm text-black mt-4">Password</label>
-            <InputComponent placeholder="Email" type="password" />
-          </div>
+          <form @submit.prevent="login">
+            <div class="flex flex-col">
+              <label class="select-none text-sm text-black mt-4">Email</label>
+              <input v-model="email" type="email"
+                     class="border-2 border-monochrome-main bg-monochrome-input rounded-xl text-md w-auto mr-2 p-2"
+                     required>
+            </div>
+            <div class="flex flex-col ">
+              <label class="select-none text-sm text-black mt-4">Password</label>
+              <!--              <InputComponent @input="password" placeholder="Email" type="password" />-->
+              <input v-model="password" type="password"
+                     class="border-2 border-monochrome-main bg-monochrome-input rounded-xl text-md w-auto mr-2 p-2"
+                     required>
+            </div>
 
-          <div class="flex">
-            <input type="checkbox" class="mt-4 checked:bg-monochrome-main">
-            <label class="text-xs text-monochrome-main select-none font-semibold mt-4 ml-2">I've read and agree with
-              Terms of Service and our Privacy Policy</label>
-          </div>
+            <div class="flex">
+              <input id="check" type="checkbox" class="mt-4 checked:bg-monochrome-main" required>
+              <label class="text-xs text-monochrome-main select-none font-semibold mt-4 ml-2">I've read and agree with
+                Terms of Service and our Privacy Policy</label>
+            </div>
 
-          <button @click="login"
-                  class="bg-monochrome-main text-white text-xl shadow-xl w-full mt-4 mb-4 p-2 rounded-xl">Login
-          </button>
-
-          <p class="text-center text-xs text-monochrome-main select-none mt-6">Don't have an account? <a href="#"
-                                                                                                         class="text-monochrome-main font-bold">Sign
-            up</a></p>
+            <button @click="login"
+                    class="bg-monochrome-main text-white text-xl shadow-xl w-full mt-4 mb-4 p-2 rounded-xl">Login
+            </button>
+          </form>
+          <p class="text-center text-xs text-monochrome-main select-none mt-6">
+            Don't have an account?
+            <a href="#" class="text-monochrome-main font-bold">Sign up</a></p>
         </div>
       </div>
     </div>
