@@ -2,8 +2,13 @@
 import { ref } from 'vue'
 import HomeIcon from '../icons/home-icon.svg'
 import TeacherIcon from '../icons/badge.svg'
+import StudentIcon from '../icons/students.svg'
 import PaymentIcon from '../icons/credit-card.svg'
 import IconComponent from '@/components/atoms/icon-component.vue'
+import { useRouter } from 'vue-router'
+import privateRoutes from '@/router/routes-private.js'
+
+const router = useRouter()
 
 const itemsOfMenu = ref([
   {
@@ -15,19 +20,31 @@ const itemsOfMenu = ref([
   },
   {
     id: 2,
+    title: 'Students',
+    path: '/students',
+    icon: StudentIcon,
+    isWindowActive: false
+  },
+  {
+    id: 3,
     title: 'Teachers',
     path: '/teachers',
     icon: TeacherIcon,
     isWindowActive: false
   },
   {
-    id: 3,
+    id: 4,
     title: 'Payments',
     path: '/payment',
     icon: PaymentIcon,
     isWindowActive: false
   }
 ])
+
+const logout = () => {
+  console.log('Logout')
+  router.push(privateRoutes.LOGIN)
+}
 
 </script>
 
@@ -48,6 +65,13 @@ const itemsOfMenu = ref([
           :altText="item.title"
         />
       </a>
+
+      <button
+        @click="logout"
+        class="mt-auto p-1.5 text-gray-500 focus:outline-none transition-colors duration-200 rounded-lg dark:text-blue-600 bg-red-400"
+      >
+        <img src="../../components/icons/logout.svg" alt="logout">
+      </button>
     </div>
   </aside>
 </template>
