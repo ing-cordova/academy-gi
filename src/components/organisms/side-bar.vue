@@ -15,27 +15,20 @@ const itemsOfMenu = ref([
     id: 1,
     title: 'Home',
     icon: HomeIcon,
-    path: '/dashboard',
+    path: privateRoutes.DASHBOARD.MAIN,
     isWindowActive: true
   },
   {
     id: 2,
-    title: 'Students',
-    path: '/students',
+    title: 'Users',
+    path: privateRoutes.DASHBOARD.TYPES,
     icon: StudentIcon,
     isWindowActive: false
   },
   {
     id: 3,
-    title: 'Teachers',
-    path: '/teachers',
-    icon: TeacherIcon,
-    isWindowActive: false
-  },
-  {
-    id: 4,
     title: 'Payments',
-    path: '/payment',
+    path: '#',
     icon: PaymentIcon,
     isWindowActive: false
   }
@@ -72,6 +65,12 @@ const logout = () => {
       >
         <img src="../../components/icons/logout.svg" alt="logout">
       </button>
+    </div>
+    <div class="flex-1">
+      <!--      <h1>Content</h1>-->
+      <slot>
+        <router-view></router-view>
+      </slot>
     </div>
   </aside>
 </template>

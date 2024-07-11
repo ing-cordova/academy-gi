@@ -1,6 +1,9 @@
 const privateRoutes = {
   LOGIN: '/login',
-  DASHBOARD: '/dashboard'
+  DASHBOARD: {
+    MAIN: '/dashboard',
+    TYPES: '/dashboard/types'
+  }
 }
 
 export default privateRoutes
