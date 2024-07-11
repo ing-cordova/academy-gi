@@ -32,7 +32,7 @@ function login() {
     console.log('Please agree to the terms of service and privacy policy')
   } else {
     console.log(email.value, password.value)
-    router.push(privateRoutes.DASHBOARD)
+    router.push(privateRoutes.DASHBOARD.MAIN)
   }
 }
 </script>
