@@ -16,7 +16,7 @@ const itemsOfMenu = ref([
     title: 'Home',
     icon: HomeIcon,
     path: privateRoutes.DASHBOARD.MAIN,
-    isWindowActive: true
+    isWindowActive: false
   },
   {
     id: 2,

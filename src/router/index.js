@@ -18,6 +18,11 @@ const router = createRouter({
       component: DashboardPage,
       children: [
         {
+          path: privateRoutes.DASHBOARD.MAIN,
+          name: 'Dashboard',
+          component: () => import('@/components/pages/intro-page.vue')
+        },
+        {
           path: privateRoutes.DASHBOARD.TYPES,
           name: 'Types',
           component: () => import('@/components/pages/user-types.vue')
