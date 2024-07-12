@@ -4,6 +4,7 @@ import { useRouter } from 'vue-router'
 import AdminIcon from '../../components/icons/admin.svg'
 import ForSchoolIcon from '../../components/icons/forschool.svg'
 import ForTeachersIcon from '../../components/icons/forteacher.svg'
+import privateRoutes from '@/router/routes-private.js'
 
 const router = useRouter()
 
@@ -12,7 +13,7 @@ const itemsOfCards = ref([
     id: 1,
     title: 'Administrator',
     icon: AdminIcon,
-    path: '/admin'
+    path: privateRoutes.DASHBOARD.WELCOME_ROLE
   },
   {
     id: 2,
@@ -29,6 +30,7 @@ const itemsOfCards = ref([
 ])
 
 const redirectTo = (path) => {
+  console.log('redirecting to: ',path)
   router.push(path)
 }
 
