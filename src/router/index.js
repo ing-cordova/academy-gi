@@ -19,13 +19,18 @@ const router = createRouter({
       children: [
         {
           path: privateRoutes.DASHBOARD.MAIN,
-          name: 'Dashboard',
+          name: 'IntroductionPage',
           component: () => import('@/components/pages/intro-page.vue')
         },
         {
           path: privateRoutes.DASHBOARD.TYPES,
           name: 'Types',
           component: () => import('@/components/pages/user-types.vue')
+        },
+        {
+          path: privateRoutes.DASHBOARD.WELCOME_ROLE,
+          name: 'WelcomeRole',
+          component: () => import('@/components/pages/administrator-role-page.vue')
         }
       ]
     },
