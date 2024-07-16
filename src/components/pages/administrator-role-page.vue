@@ -101,29 +101,29 @@ const filters = ref({
         </template>
         <template #empty> No administrators found.</template>
         <template #loading> Loading administrator data. Please wait.</template>
-        <Column field="code" header="Code" style="min-width: 12rem">
+        <Column field="code" header="Code" style="min-width: 12rem; user-select: none">
           <template #filter="{ filterModel, filterCallback }">
             <InputText v-model="filterModel.value" type="text" @input="filterCallback()" placeholder="Search by CODE" />
           </template>
         </Column>
-        <Column field="fullname" header="Fullname" style="min-width: 12rem">
+        <Column field="fullname" header="Fullname" style="min-width: 12rem; user-select: none">
           <template #filter="{ filterModel, filterCallback }">
             <InputText v-model="filterModel.value" type="text" @input="filterCallback()"
                        placeholder="Search by FULLNAME" />
           </template>
         </Column>
-        <Column field="dui" header="DUI" style="min-width: 12rem">
+        <Column field="dui" header="DUI" style="min-width: 12rem; user-select: none">
           <template #filter="{ filterModel, filterCallback }">
             <InputText v-model="filterModel.value" type="text" @input="filterCallback()" placeholder="Search by DUI" />
           </template>
         </Column>
-        <Column field="email" header="Email" style="min-width: 12rem">
+        <Column field="email" header="Email" style="min-width: 12rem; user-select: none">
           <template #filter="{ filterModel, filterCallback }">
             <InputText v-model="filterModel.value" type="text" @input="filterCallback()"
                        placeholder="Search by EMAIL" />
           </template>
         </Column>
-        <Column field="status" header="Status" style="min-width: 12rem">
+        <Column field="status" header="Status" style="min-width: 12rem; user-select: none">
           <template #body="{ data }">
             <Tag :value="data.status" :severity="data.status === 'active' ? 'success' : 'danger'" />
           </template>
