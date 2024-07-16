@@ -9,11 +9,12 @@ import InputIcon from 'primevue/inputicon'
 import Tag from 'primevue/tag'
 import Button from 'primevue/button'
 import Dialog from 'primevue/dialog'
-import 'primeicons/primeicons.css';
+import 'primeicons/primeicons.css'
+import exportPDF from '@/utils/utils-pdf.js'
+import { HEADER_PDF_ADMIN } from '@/utils/configuration-env.js'
 
 const loading = ref(false)
-const visible = ref(false);
-
+const visible = ref(false)
 
 const users = [
   {
@@ -57,7 +58,7 @@ const users = [
     dui: '00000000-5',
     email: 'mjcordova@innovacion.gob.sv',
     status: 'active'
-  },
+  }
 ]
 
 const filters = ref({
@@ -68,6 +69,14 @@ const filters = ref({
   email: { value: null, matchMode: FilterMatchMode.CONTAINS },
   status: { value: null, matchMode: FilterMatchMode.CONTAINS }
 })
+
+const exportPDFDocument = () => {
+  exportPDF(HEADER_PDF_ADMIN,
+    ['Code', 'Fullname', 'DUI', 'Status'],
+    users.map(user => [user.code, user.fullname, user.dui, user.status]),
+    'info-administrators')
+}
+
 </script>
 
 <template>
@@ -78,9 +87,9 @@ const filters = ref({
     <div class="flex items-center gap-2 mt-4">
       <Button label="HELP" severity="primary" icon="pi pi-question" rounded />
       <Button label="REFRESH" severity="secondary" icon="pi pi-refresh" rounded />
-      <Button label="ADD NEW ADMIN" severity="success" icon="pi pi-plus" rounded @click="visible = true"/>
+      <Button label="ADD NEW ADMIN" severity="success" icon="pi pi-plus" rounded @click="visible = true" />
       <Button label="DELETE" severity="danger" icon="pi pi-trash" rounded />
-      <Button label="EXPORT" severity="warn" icon="pi pi-upload" rounded />
+      <Button label="EXPORT" severity="warn" icon="pi pi-upload" rounded @click="exportPDFDocument()" />
       <Button label="IMPORT" severity="help" icon="pi pi-download" rounded />
       <Button label="PRINT" severity="contrast" icon="pi pi-print" rounded />
     </div>
