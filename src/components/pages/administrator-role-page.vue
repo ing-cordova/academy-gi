@@ -72,7 +72,7 @@ const filters = ref({
 
 const exportPDFDocument = () => {
   exportPDF(HEADER_PDF_ADMIN,
-    ['Code', 'Fullname', 'DUI', 'Status'],
+    ['CODE', 'FULLNAME', 'DUI', 'STATUS'],
     users.map(user => [user.code, user.fullname, user.dui, user.status]),
     'info-administrators')
 }
