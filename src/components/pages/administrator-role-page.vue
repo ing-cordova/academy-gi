@@ -12,6 +12,7 @@ import Dialog from 'primevue/dialog'
 import 'primeicons/primeicons.css'
 import exportPDF from '@/utils/utils-pdf.js'
 import { HEADER_PDF_ADMIN } from '@/utils/configuration-env.js'
+import UserDashboardTemplate from '@/components/templates/user-dashboard-template.vue'
 
 const loading = ref(false)
 const visible = ref(false)
@@ -80,20 +81,100 @@ const exportPDFDocument = () => {
 </script>
 
 <template>
-  <div class="m-5 font-pop">
-    <h1 class="text-xl text-monochrome-main select-none">Welcome to the section in which you can manage users type
-      administrators.</h1>
+  <!--  <div class="m-5 font-pop">-->
+  <!--    <h1 class="text-xl text-monochrome-main select-none">Welcome to the section in which you can manage users type-->
+  <!--      administrators.</h1>-->
 
-    <div class="flex items-center gap-2 mt-4">
+  <!--    <div class="flex items-center gap-2 mt-4">-->
+  <!--      <Button label="HELP" severity="primary" icon="pi pi-question" rounded />-->
+  <!--      <Button label="REFRESH" severity="secondary" icon="pi pi-refresh" rounded />-->
+  <!--      <Button label="ADD NEW ADMIN" severity="success" icon="pi pi-plus" rounded @click="visible = true" />-->
+  <!--      <Button label="DELETE" severity="danger" icon="pi pi-trash" rounded />-->
+  <!--      <Button label="EXPORT" severity="warn" icon="pi pi-upload" rounded @click="exportPDFDocument()" />-->
+  <!--      <Button label="IMPORT" severity="help" icon="pi pi-download" rounded />-->
+  <!--      <Button label="PRINT" severity="contrast" icon="pi pi-print" rounded />-->
+  <!--    </div>-->
+  <!--    <div class="card tabla fixed">-->
+  <!--      <DataTable v-model:filters="filters" :value="users" paginator :rows="5" dataKey="id" filterDisplay="row"-->
+  <!--                 :loading="loading"-->
+  <!--                 :globalFilterFields="['code', 'fullname', 'dui', 'email']"-->
+  <!--      >-->
+  <!--        <template #header>-->
+  <!--          <div class="flex justify-end">-->
+  <!--            <IconField>-->
+  <!--              <InputIcon>-->
+  <!--                <i class="pi pi-search" />-->
+  <!--              </InputIcon>-->
+  <!--              <InputText v-model="filters['global'].value" placeholder="Keyword Search" />-->
+  <!--            </IconField>-->
+  <!--          </div>-->
+  <!--        </template>-->
+  <!--        <template #empty> No administrators found.</template>-->
+  <!--        <template #loading> Loading administrator data. Please wait.</template>-->
+  <!--        <Column field="code" header="Code" style="min-width: 12rem; user-select: none">-->
+  <!--          <template #filter="{ filterModel, filterCallback }">-->
+  <!--            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" placeholder="Search by CODE" />-->
+  <!--          </template>-->
+  <!--        </Column>-->
+  <!--        <Column field="fullname" header="Fullname" style="min-width: 12rem; user-select: none">-->
+  <!--          <template #filter="{ filterModel, filterCallback }">-->
+  <!--            <InputText v-model="filterModel.value" type="text" @input="filterCallback()"-->
+  <!--                       placeholder="Search by FULLNAME" />-->
+  <!--          </template>-->
+  <!--        </Column>-->
+  <!--        <Column field="dui" header="DUI" style="min-width: 12rem; user-select: none">-->
+  <!--          <template #filter="{ filterModel, filterCallback }">-->
+  <!--            <InputText v-model="filterModel.value" type="text" @input="filterCallback()" placeholder="Search by DUI" />-->
+  <!--          </template>-->
+  <!--        </Column>-->
+  <!--        <Column field="email" header="Email" style="min-width: 12rem; user-select: none">-->
+  <!--          <template #filter="{ filterModel, filterCallback }">-->
+  <!--            <InputText v-model="filterModel.value" type="text" @input="filterCallback()"-->
+  <!--                       placeholder="Search by EMAIL" />-->
+  <!--          </template>-->
+  <!--        </Column>-->
+  <!--        <Column field="status" header="Status" style="min-width: 12rem; user-select: none">-->
+  <!--          <template #body="{ data }">-->
+  <!--            <Tag :value="data.status" :severity="data.status === 'active' ? 'success' : 'danger'" />-->
+  <!--          </template>-->
+  <!--          <template #filter="{ filterModel, filterCallback }">-->
+  <!--            <InputText v-model="filterModel.value" type="text" @input="filterCallback()"-->
+  <!--                       placeholder="Search by STATUS" />-->
+  <!--          </template>-->
+  <!--        </Column>-->
+  <!--      </DataTable>-->
+  <!--    </div>-->
+
+  <!--    <Dialog v-model:visible="visible" modal header="Add new administrator" :style="{ width: '45rem' }">-->
+  <!--      <span class="text-surface-500 dark:text-surface-400 block mb-8">Introduce the administrator's information</span>-->
+  <!--      <div class="flex items-center gap-4 mb-4">-->
+  <!--        <label for="fullname" class="font-semibold w-24">Fullname</label>-->
+  <!--        <InputText id="fullname" class="flex-auto" autocomplete="off" />-->
+  <!--      </div>-->
+  <!--      <div class="flex items-center gap-4 mb-4">-->
+  <!--        <label for="dui" class="font-semibold w-24">DUI</label>-->
+  <!--        <InputText id="dui" class="flex-auto" autocomplete="off" />-->
+  <!--      </div>-->
+  <!--      <div class="flex items-center gap-4 mb-8">-->
+  <!--        <label for="email" class="font-semibold w-24">Email</label>-->
+  <!--        <InputText id="email" class="flex-auto" autocomplete="off" />-->
+  <!--      </div>-->
+  <!--      <div class="flex justify-end gap-2">-->
+  <!--        <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>-->
+  <!--        <Button type="button" label="Save" @click="visible = false"></Button>-->
+  <!--      </div>-->
+  <!--    </Dialog>-->
+  <!--  </div>-->
+  <UserDashboardTemplate>
+    <template #title>
+      <h1 class="text-xl text-monochrome-main select-none">Welcome to the section in which you can manage users
+        types</h1>
+    </template>
+    <template #buttons>
       <Button label="HELP" severity="primary" icon="pi pi-question" rounded />
       <Button label="REFRESH" severity="secondary" icon="pi pi-refresh" rounded />
-      <Button label="ADD NEW ADMIN" severity="success" icon="pi pi-plus" rounded @click="visible = true" />
-      <Button label="DELETE" severity="danger" icon="pi pi-trash" rounded />
-      <Button label="EXPORT" severity="warn" icon="pi pi-upload" rounded @click="exportPDFDocument()" />
-      <Button label="IMPORT" severity="help" icon="pi pi-download" rounded />
-      <Button label="PRINT" severity="contrast" icon="pi pi-print" rounded />
-    </div>
-    <div class="card tabla fixed">
+    </template>
+    <template #table>
       <DataTable v-model:filters="filters" :value="users" paginator :rows="5" dataKey="id" filterDisplay="row"
                  :loading="loading"
                  :globalFilterFields="['code', 'fullname', 'dui', 'email']"
@@ -142,38 +223,6 @@ const exportPDFDocument = () => {
           </template>
         </Column>
       </DataTable>
-    </div>
-
-    <Dialog v-model:visible="visible" modal header="Add new administrator" :style="{ width: '45rem' }">
-      <span class="text-surface-500 dark:text-surface-400 block mb-8">Introduce the administrator's information</span>
-      <div class="flex items-center gap-4 mb-4">
-        <label for="fullname" class="font-semibold w-24">Fullname</label>
-        <InputText id="fullname" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex items-center gap-4 mb-4">
-        <label for="dui" class="font-semibold w-24">DUI</label>
-        <InputText id="dui" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex items-center gap-4 mb-8">
-        <label for="email" class="font-semibold w-24">Email</label>
-        <InputText id="email" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex justify-end gap-2">
-        <Button type="button" label="Cancel" severity="secondary" @click="visible = false"></Button>
-        <Button type="button" label="Save" @click="visible = false"></Button>
-      </div>
-    </Dialog>
-  </div>
+    </template>
+  </UserDashboardTemplate>
 </template>
-
-<style scoped>
-.tabla {
-  right: 30px;
-  left: 74px;
-}
-
-:deep(.p-datatable-table) {
-  border-spacing: 0;
-  width: 90% !important;
-}
-</style>
